@@ -40,6 +40,22 @@
             video.style.display = "block";
             video.play();
         });
+
+        let keySequence = '';
+        const resetSequence = 'croad';
+
+        document.addEventListener("keydown", function(event) {
+            keySequence += event.key;
+            if (keySequence === resetSequence) {
+                image.style.display = "block";
+                video.style.display = "none";
+                video.pause();
+                video.currentTime = 0;
+                keySequence = '';
+            } else if (!resetSequence.startsWith(keySequence)) {
+                keySequence = '';
+            }
+        });
     </script>
 </body>
 </html>
